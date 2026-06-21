@@ -1,0 +1,20 @@
+﻿[2026-06-10 16:11:29] notifier started, baseline=15
+[2026-06-10 16:12:05] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 3188 in 4.81s
+[2026-06-10 16:24:44] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 36760 in 4.57s
+[2026-06-10 16:49:00] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 34904 in 4.63s
+[2026-06-10 16:54:49] NOTIFY: AUTO-HEALED: demo-service | Port 3010 crashed -> new pid 38512 in 4.72s
+[2026-06-10 17:42:36] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 41144 in 3.37s
+[2026-06-10 18:16:50] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 5180 in 4.88s
+[2026-06-12 08:24:34] notifier started, baseline=25
+[2026-06-12 08:39:26] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 28524 in 4.45s
+[2026-06-14 13:10:05] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-15 12:07:24] notifier started, baseline=28
+[2026-06-15 15:47:15] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-16 01:28:50] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-16 10:01:22] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-16 10:01:38] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-16 10:05:47] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-16 17:24:08] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-17 11:01:07] NOTIFY: AUTO-HEALED: plc-camera-tool | Port 3000 crashed -> new pid 44844 in 3.38s
+[2026-06-18 16:09:32] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)
+[2026-06-20 11:15:11] NOTIFY: SERVICE DOWN: plant-camera | Port 554 unreachable (monitor-only)

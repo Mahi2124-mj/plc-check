@@ -1,0 +1,70 @@
+{
+  "_README": "Config the Reliability Dashboard uses (server.js shells out to port_watchdog.py with this). 'demo-service' (:3010) is the crash-demo target (recover:true). The real tool (:3000) and the plant camera are MONITOR-ONLY (recover:false) so the dashboard never kills your live server.",
+
+  "global": {
+    "poll_interval_s": 5,
+    "http_timeout_s": 2.5,
+    "tcp_timeout_s": 1.5,
+    "default_cooldown_s": 0,
+    "max_restarts_per_window": 40,
+    "restart_window_s": 600,
+    "breaker_cooldown_s": 45,
+    "boot_grace_s": 2,
+    "boot_timeout_s": 25,
+    "graceful_kill_s": 5,
+    "port_free_timeout_s": 8,
+    "validation_retries": 8,
+    "validation_interval_s": 1.0,
+    "alert_webhook": "",
+    "predictive": { "enabled": true }
+  },
+
+  "services": [
+    {
+      "name": "plc-camera-tool",
+      "enabled": true,
+      "host": "127.0.0.1",
+      "port": 3000,
+      "health_url": "http://127.0.0.1:3000/api/health",
+      "critical": true,
+      "recover": false,
+      "proc_match": "server.js"
+    },
+    {
+      "name": "demo-service",
+      "enabled": true,
+      "host": "127.0.0.1",
+      "port": 3010,
+      "health_url": "http://127.0.0.1:3010/api/health",
+      "critical": true,
+      "recover": true,
+      "proc_match": "server.js",
+      "cooldown_s": 0,
+      "restart": {
+        "argv": ["node", "server.js"],
+        "cwd": "C:/Users/DX-ADMIN/Documents/plc code",
+        "env": { "PORT": "3010" },
+        "log": "logs/demo-service.log"
+      }
+    },
+    {
+      "name": "plant-camera",
+      "enabled": true,
+      "host": "192.168.10.115",
+      "port": 554,
+      "rtsp": true,
+      "remote": true,
+      "critical": true,
+      "recover": false
+    },
+    {
+      "name": "plc-mc",
+      "enabled": true,
+      "host": "192.168.0.39",
+      "port": 5007,
+      "remote": true,
+      "critical": true,
+      "recover": false
+    }
+  ]
+}

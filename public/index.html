@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLC + Camera Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>PLC + Camera Tool</h1>
+    <nav class="tabs">
+      <button class="tab active" data-tab="camera">Camera</button>
+      <button class="tab" data-tab="plc">PLC</button>
+      <button class="tab" data-tab="watchdog">Watchdog</button>
+      <button class="tab" data-tab="report">Report</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ CAMERA ============ -->
+    <section id="camera" class="panel active">
+      <h2>Camera Test</h2>
+
+      <div class="row">
+        <label>Camera IP</label>
+        <input id="cam-ip" value="192.168.10.115" placeholder="192.168.10.115" />
+        <button id="cam-ping">Ping</button>
+        <span id="cam-ping-status" class="status"></span>
+      </div>
+
+      <div class="grid">
+        <div class="row"><label>Username</label><input id="cam-user" value="admin" /></div>
+        <div class="row"><label>Password</label><input id="cam-pass" type="password" value="admin123" /></div>
+        <div class="row"><label>Port</label><input id="cam-port" type="number" value="554" /></div>
+        <div class="row">
+          <label>Stream</label>
+          <select id="cam-stream">
+            <option value="sub">Sub (low-res)</option>
+            <option value="main">Main (hi-res)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <label>RTSP URL</label>
+        <input id="cam-rtsp" class="wide" value="rtsp://admin:admin123@192.168.10.115:554/h264/ch1/sub/av_stream" />
+      </div>
+
+      <div class="row">
+        <button id="cam-build" class="ghost">Build URL from IP</button>
+        <label class="chk"><input type="checkbox" id="cam-tcp" checked /> RTSP over TCP</label>
+        <button id="cam-start" class="go">Start Live View</button>
+        <button id="cam-stop" class="stop" disabled>Stop</button>
+      </div>
+
+      <div class="video">
+        <img id="cam-video" alt="" />
+        <div id="cam-placeholder" class="placeholder">Live view stopped</div>
+      </div>
+
+      <p class="hint">
+        URL field me poora <code>rtsp://user:pass@ip:port/path</code> daalo, ya IP/user/pass/stream bhar ke
+        <b>Build URL from IP</b> dabao. Is camera (XiongMai/Topsvision OEM) ke paths:
+        <code>/h264/ch1/sub/av_stream</code> (sub) &amp; <code>/h264/ch1/main/av_stream</code> (main).
+        Stream H.265/HEVC hai &mdash; server use MJPEG me convert karke dikhata hai.
+      </p>
+    </section>
+
+    <!-- ============ PLC ============ -->
+    <section id="plc" class="panel">
+      <h2>Mitsubishi Q Series &mdash; MC Protocol</h2>
+
+      <div class="grid">
+        <div class="row"><label>PLC IP</label><input id="plc-ip" value="192.168.0.39" placeholder="192.168.0.39" /></div>
+        <div class="row"><label>Port</label><input id="plc-port" type="number" value="5007" /></div>
+        <div class="row">
+          <label>Frame</label>
+          <select id="plc-frame"><option value="3E">3E</option><option value="4E">4E</option></select>
+        </div>
+        <div class="row">
+          <label>Device</label>
+          <select id="plc-device"></select>
+        </div>
+        <div class="row"><label>Start Addr</label><input id="plc-addr" value="0" /></div>
+        <div class="row"><label>Count</label><input id="plc-count" type="number" min="1" value="1" /></div>
+      </div>
+
+      <div class="row btns">
+        <button id="plc-ping">Ping</button>
+        <button id="plc-read" class="rd">Read</button>
+        <button id="plc-write" class="wr">Write</button>
+        <span id="plc-status" class="status"></span>
+      </div>
+
+      <div class="row">
+        <label>Write values</label>
+        <input id="plc-values" class="wide" placeholder="bit: 1,0,1   |   word: 100, 0x1F, 4096" />
+      </div>
+
+      <div class="row">
+        <label>Presets / Recipes</label>
+        <select id="plc-preset-list"><option value="">&mdash; select preset &mdash;</option></select>
+        <button id="plc-preset-load" class="ghost">Load</button>
+        <button id="plc-preset-save" class="ghost">Save current</button>
+        <button id="plc-preset-del" class="ghost">Delete</button>
+      </div>
+
+      <div id="plc-result" class="result" hidden>
+        <div id="plc-result-text"></div>
+        <div id="plc-result-hex" class="hex"></div>
+      </div>
+
+      <p class="hint">
+        Bit devices (X,Y,M,L,F,B,SM,SB) bit-units me; Word devices (D,W,R,ZR,SD,SW,Z,TN,CN) word-units me.
+        X/Y/B/W addresses hex maane jaate hain; baaki decimal. Hex force karne ko <code>0x</code> prefix.
+        PLC side pe MC Protocol (TCP, Binary) connection configured hona chahiye.
+      </p>
+    </section>
+
+    <!-- ============ WATCHDOG ============ -->
+    <section id="watchdog" class="panel">
+      <h2>Watchdog &mdash; Crash &rarr; Self-Heal Test</h2>
+
+      <div class="cards">
+        <div class="card"><div class="k">Server</div><div class="v" id="wd-state">&hellip;</div></div>
+        <div class="card"><div class="k">PID</div><div class="v" id="wd-pid">&hellip;</div></div>
+        <div class="card"><div class="k">Uptime</div><div class="v" id="wd-uptime">&hellip;</div></div>
+        <div class="card"><div class="k">Auto-heals seen</div><div class="v" id="wd-heals">0</div></div>
+      </div>
+
+      <div class="row btns">
+        <button id="wd-crash" class="stop">&#128165; Crash Server (:3000)</button>
+        <button id="wd-heal" class="go">&#128737; Heal All Now</button>
+        <label class="chk"><input type="checkbox" id="wd-hang" /> Freeze (hang) instead of exit</label>
+        <span id="wd-status" class="status"></span>
+      </div>
+
+      <div id="wd-log" class="wdlog"></div>
+
+      <div id="dog-stage" class="dog-stage happy">
+        <div class="dog-halo"></div>
+        <canvas id="dog-canvas" class="dog-canvas" width="300" height="360"></canvas>
+        <div id="dog-fallback" class="dog-fallback">Doberman dikhane ke liye image ko <code>public\dog.png</code> me save karo &mdash; green background khud hat jayega.</div>
+        <div class="dog-floor"></div>
+        <div class="dog-tag">&#128054; Watchdog on guard</div>
+      </div>
+    </section>
+
+    <!-- ============ RELIABILITY REPORT ============ -->
+    <section id="report" class="panel">
+      <h2>Reliability Report</h2>
+
+      <div class="row btns">
+        <button id="rep-refresh" class="ghost">&#8635; Refresh</button>
+        <button id="rep-csv" class="ghost">&#8681; Download CSV</button>
+        <span id="rep-window" class="muted"></span>
+      </div>
+
+      <div class="cards">
+        <div class="card"><div class="k">Total incidents</div><div class="v" id="rep-total">&hellip;</div></div>
+        <div class="card"><div class="k">Auto-heals</div><div class="v up" id="rep-heals">&hellip;</div></div>
+        <div class="card"><div class="k">Avg heal (MTTR)</div><div class="v" id="rep-mttr">&hellip;</div></div>
+        <div class="card"><div class="k">Down alerts</div><div class="v" id="rep-alerts">&hellip;</div></div>
+      </div>
+
+      <h3 class="dash-h">Per-service</h3>
+      <div id="rep-svc"></div>
+
+      <h3 class="dash-h">Recent incidents</h3>
+      <div class="feed" id="rep-recent"></div>
+
+      <h3 class="dash-h">Heal-time trend <span class="muted">&mdash; live</span></h3>
+      <div class="rep-graph-wrap"><svg id="rep-graph" viewBox="0 0 640 220" preserveAspectRatio="none"></svg></div>
+
+      <p class="hint">
+        Ye data watchdog ke <code>logs\watchdog_incidents.jsonl</code> se banta hai &mdash; har crash, auto-heal,
+        aur down-alert ka record. <b>MTTR</b> = average heal time. CSV export maintenance record ke liye.
+      </p>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

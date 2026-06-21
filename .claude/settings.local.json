@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(node-red --version)",
+      "Bash(ffmpeg -version)"
+    ]
+  }
+}

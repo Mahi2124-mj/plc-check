@@ -1,0 +1,62 @@
+{
+  "_README": "Watchdog config for the PLC + Camera tool. START-WATCHDOG.bat chalao. Server crash/port-kill hote hi watchdog use usi port pe naye PID se restart kar dega. Server ko watchdog ke SAME user (non-admin) se chalao warna kill nahi kar payega.",
+
+  "global": {
+    "poll_interval_s": 3,
+    "http_timeout_s": 3.0,
+    "tcp_timeout_s": 2.0,
+    "default_cooldown_s": 5,
+    "max_restarts_per_window": 12,
+    "restart_window_s": 300,
+    "breaker_cooldown_s": 60,
+    "boot_grace_s": 2,
+    "boot_timeout_s": 25,
+    "graceful_kill_s": 5,
+    "port_free_timeout_s": 8,
+    "validation_retries": 8,
+    "validation_interval_s": 1.5,
+    "alert_webhook": "",
+    "predictive": { "enabled": true }
+  },
+
+  "services": [
+    {
+      "name": "plc-camera-tool",
+      "enabled": true,
+      "host": "127.0.0.1",
+      "port": 3000,
+      "health_url": "http://127.0.0.1:3000/api/health",
+      "critical": true,
+      "recover": true,
+      "proc_match": "server.js",
+      "cooldown_s": 5,
+      "restart": {
+        "argv": ["node", "server.js"],
+        "cwd": "C:/Users/DX-ADMIN/Documents/plc code",
+        "env": { "PORT": "3000" },
+        "log": "logs/plc-camera-tool.log"
+      }
+    },
+    {
+      "_note": "Plant camera (RTSP). Remote hardware -> monitor + alert only (cannot restart a physical camera).",
+      "name": "plant-camera",
+      "enabled": true,
+      "host": "192.168.10.115",
+      "port": 554,
+      "rtsp": true,
+      "remote": true,
+      "critical": true,
+      "recover": false
+    },
+    {
+      "_note": "Mitsubishi Q PLC (MC protocol, TCP). Remote hardware -> monitor + alert only. Update host/port if your PLC moves.",
+      "name": "plc-mc",
+      "enabled": true,
+      "host": "192.168.0.39",
+      "port": 5007,
+      "remote": true,
+      "critical": true,
+      "recover": false
+    }
+  ]
+}

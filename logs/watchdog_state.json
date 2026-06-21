@@ -1,0 +1,238 @@
+{
+  "services": {
+    "plc-camera-tool": {
+      "restart_history": [
+        1781674265.7008567
+      ],
+      "breaker": {
+        "open": false,
+        "until": 0,
+        "reason": ""
+      },
+      "last_restart_at": 1781674265.7008576,
+      "restart_count_total": 19,
+      "pid_history": [
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-10T11:18:55.349608+00:00"
+        },
+        {
+          "pid": 34904,
+          "role": "replacement",
+          "at": "2026-06-10T11:18:59.975803+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-10T12:12:31.981535+00:00"
+        },
+        {
+          "pid": 41144,
+          "role": "replacement",
+          "at": "2026-06-10T12:12:35.347942+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-10T12:46:42.185844+00:00"
+        },
+        {
+          "pid": 5180,
+          "role": "replacement",
+          "at": "2026-06-10T12:46:47.059311+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-11T20:29:43.023724+00:00"
+        },
+        {
+          "pid": 38516,
+          "role": "replacement",
+          "at": "2026-06-11T20:29:58.495042+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-11T20:31:12.713803+00:00"
+        },
+        {
+          "pid": 12680,
+          "role": "replacement",
+          "at": "2026-06-11T20:31:17.115064+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-11T20:32:52.602177+00:00"
+        },
+        {
+          "pid": 13136,
+          "role": "replacement",
+          "at": "2026-06-11T20:32:56.845337+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-11T20:34:48.020901+00:00"
+        },
+        {
+          "pid": 13168,
+          "role": "replacement",
+          "at": "2026-06-11T20:34:57.867268+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-12T03:09:17.610438+00:00"
+        },
+        {
+          "pid": 28524,
+          "role": "replacement",
+          "at": "2026-06-12T03:09:22.061105+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-15T06:36:04.834882+00:00"
+        },
+        {
+          "pid": 14296,
+          "role": "replacement",
+          "at": "2026-06-15T06:36:09.173255+00:00"
+        },
+        {
+          "pid": 14296,
+          "role": "crashed",
+          "at": "2026-06-17T05:31:02.330184+00:00"
+        },
+        {
+          "pid": 44844,
+          "role": "replacement",
+          "at": "2026-06-17T05:31:05.700901+00:00"
+        }
+      ],
+      "samples": [
+        {
+          "t": 1782068936.420302,
+          "cpu": 0.0,
+          "rss_mb": 7.2,
+          "threads": 11,
+          "handles": 224
+        },
+        {
+          "t": 1782068941.7812333,
+          "cpu": 0.0,
+          "rss_mb": 7.2,
+          "threads": 11,
+          "handles": 224
+        },
+        {
+          "t": 1782068947.0764818,
+          "cpu": 0.0,
+          "rss_mb": 7.3,
+          "threads": 11,
+          "handles": 224
+        },
+        {
+          "t": 1782068952.4355772,
+          "cpu": 0.0,
+          "rss_mb": 7.1,
+          "threads": 11,
+          "handles": 224
+        },
+        {
+          "t": 1782068957.7933326,
+          "cpu": 0.0,
+          "rss_mb": 6.9,
+          "threads": 11,
+          "handles": 224
+        },
+        {
+          "t": 1782068963.134515,
+          "cpu": 0.0,
+          "rss_mb": 6.8,
+          "threads": 11,
+          "handles": 224
+        }
+      ],
+      "last_status": "healthy",
+      "last_incident": {
+        "status": "recovered",
+        "at": "2026-06-17T05:31:02.330184+00:00",
+        "reason": "heartbeat_timeout"
+      }
+    },
+    "demo-service": {
+      "restart_history": [
+        1781090688.1377518
+      ],
+      "breaker": {
+        "open": false,
+        "until": 0,
+        "reason": ""
+      },
+      "last_restart_at": 1781090688.1377528,
+      "restart_count_total": 2,
+      "pid_history": [
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-10T03:48:59.011863+00:00"
+        },
+        {
+          "pid": null,
+          "role": "replacement",
+          "at": "2026-06-10T03:49:22.286556+00:00"
+        },
+        {
+          "pid": null,
+          "role": "crashed",
+          "at": "2026-06-10T11:24:43.417676+00:00"
+        },
+        {
+          "pid": 38512,
+          "role": "replacement",
+          "at": "2026-06-10T11:24:48.137776+00:00"
+        }
+      ],
+      "samples": [],
+      "last_status": "port_closed",
+      "last_incident": {
+        "status": "recovered",
+        "at": "2026-06-10T11:24:43.417676+00:00",
+        "reason": "port_closed"
+      }
+    },
+    "plant-camera": {
+      "restart_history": [],
+      "breaker": {
+        "open": false,
+        "until": 0,
+        "reason": ""
+      },
+      "last_restart_at": 0,
+      "restart_count_total": 0,
+      "pid_history": [],
+      "samples": [],
+      "last_status": "healthy",
+      "alerted_down": false
+    },
+    "plc-mc": {
+      "restart_history": [],
+      "breaker": {
+        "open": false,
+        "until": 0,
+        "reason": ""
+      },
+      "last_restart_at": 0,
+      "restart_count_total": 0,
+      "pid_history": [],
+      "samples": [],
+      "last_status": "unreachable",
+      "alerted_down": true
+    }
+  },
+  "updated_at": "2026-06-21T19:09:25.204957+00:00"
+}

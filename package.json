@@ -1,0 +1,11 @@
+{
+  "name": "plc-camera-tool",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone tool: IP camera ping + live RTSP view, and Mitsubishi Q series MC Protocol (3E/4E) bit/word read-write. Pure Node.js, no dependencies.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test-mc.js"
+  }
+}

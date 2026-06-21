@@ -1,0 +1,103 @@
+{
+  "checked_at": "2026-06-21T19:09:25.216258+00:00",
+  "total": 3,
+  "healthy": 2,
+  "unhealthy": [
+    "plc-mc"
+  ],
+  "at_risk": [],
+  "services": [
+    {
+      "name": "plc-camera-tool",
+      "port": 3000,
+      "configured_port": 3000,
+      "failed_over": false,
+      "host": "127.0.0.1",
+      "type": "http",
+      "critical": true,
+      "recover": true,
+      "listening": true,
+      "pids": [
+        44844
+      ],
+      "owner_pid": 44844,
+      "owner_match": true,
+      "heartbeat": true,
+      "http_status": 200,
+      "latency_ms": 15.5,
+      "ws_ok": null,
+      "healthy": true,
+      "degraded": false,
+      "reason": "ok",
+      "metrics": {
+        "pid": 44844,
+        "cpu": 0.0,
+        "rss_mb": 6.8,
+        "threads": 11,
+        "handles": 224,
+        "status": "running",
+        "name": "node.exe"
+      },
+      "prediction": {
+        "crash_probability": 0.0,
+        "signals": [],
+        "ram_growth_mb": 0.5,
+        "cpu_avg": 0.0,
+        "samples": 6,
+        "high": false
+      },
+      "breaker_open": false,
+      "checked_at": "2026-06-21T19:09:23.157067+00:00"
+    },
+    {
+      "name": "plant-camera",
+      "port": 554,
+      "configured_port": 554,
+      "failed_over": false,
+      "host": "192.168.10.115",
+      "type": "http",
+      "critical": true,
+      "recover": false,
+      "listening": true,
+      "pids": [],
+      "owner_pid": null,
+      "owner_match": true,
+      "heartbeat": true,
+      "http_status": 200,
+      "latency_ms": 25.9,
+      "ws_ok": null,
+      "healthy": true,
+      "degraded": false,
+      "reason": "ok",
+      "metrics": {},
+      "prediction": {},
+      "breaker_open": false,
+      "checked_at": "2026-06-21T19:09:23.201966+00:00"
+    },
+    {
+      "name": "plc-mc",
+      "port": 5007,
+      "configured_port": 5007,
+      "failed_over": false,
+      "host": "192.168.0.39",
+      "type": "http",
+      "critical": true,
+      "recover": false,
+      "listening": false,
+      "pids": [],
+      "owner_pid": null,
+      "owner_match": true,
+      "heartbeat": null,
+      "http_status": null,
+      "latency_ms": null,
+      "ws_ok": null,
+      "healthy": false,
+      "degraded": false,
+      "reason": "unreachable",
+      "metrics": {},
+      "prediction": {},
+      "breaker_open": false,
+      "checked_at": "2026-06-21T19:09:25.204931+00:00"
+    }
+  ]
+}

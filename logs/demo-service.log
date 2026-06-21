@@ -1,0 +1,12 @@
+
+===== watchdog restart 2026-06-10T03:49:00.042906+00:00 :: node server.js =====
+PLC + Camera tool running at  http://localhost:3010
+ffmpeg: C:\Users\DX-ADMIN\Documents\plc code\tools\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe
+(node:32216) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+===== watchdog restart 2026-06-10T11:24:44.447570+00:00 :: node server.js =====
+PLC + Camera tool running at  http://localhost:3010
+ffmpeg: C:\Users\DX-ADMIN\Documents\plc code\tools\ffmpeg-8.1.1-essentials_build\bin\ffmpeg.exe
+(node:38512) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
